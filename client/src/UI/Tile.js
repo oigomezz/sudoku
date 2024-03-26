@@ -1,10 +1,9 @@
 import React from "react";
 
 function Tile({ puzzle, grid, handleChange }) {
-  const tile = col !== 0 ? "tile taken" : "tile";
-
   return grid.map((row, rowIndex) => {
     return row.map((col, colIndex) => {
+      const tile = col !== 0 ? "tile taken" : "tile";
       return (
         <input
           className={puzzle[rowIndex][colIndex] !== 0 ? "initial" : tile}
