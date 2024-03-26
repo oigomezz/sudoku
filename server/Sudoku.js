@@ -49,7 +49,7 @@ module.exports = class Sudoku {
   isSolvable() {
     this.isValidSudoku = isValidPuzzle(this.sudoku);
     if (this.isValidSudoku) {
-      Util.copyGrid(this.sudoku, this.solvedSudoku);
+      Utils.copyGrid(this.sudoku, this.solvedSudoku);
       return solve(this.solvedSudoku);
     } else {
       return false;

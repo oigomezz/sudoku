@@ -21,7 +21,7 @@ app.get("/puzzle", (req, res) => {
 
 app.post("/solve", (req, res) => {
   let puzzle = [];
-  Util.copyGrid(req.body.board, puzzle);
+  Utils.copyGrid(req.body.board, puzzle);
   let sudoku = new Sudoku(puzzle);
   let solution = sudoku.isSolvable();
   let solvedSudoku;
@@ -38,7 +38,7 @@ app.post("/solve", (req, res) => {
 
 app.post("/validate", (req, res) => {
   let puzzle = [];
-  Util.copyGrid(req.body.board, puzzle);
+  Utils.copyGrid(req.body.board, puzzle);
   let sudoku = new Sudoku(puzzle);
   let status = sudoku.validate();
   res.status(200).send({ status: status });
