@@ -1,4 +1,4 @@
-const Utils = require("./Util.js");
+const Utils = require("./Utils.js");
 
 module.exports = class Sudoku {
   constructor(sudoku) {
