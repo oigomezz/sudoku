@@ -1,151 +1,102 @@
+:root {
+  --color1: rgb(233, 181, 172);
+  --color1-dark: rgb(201, 153, 145);
+  --color1-darker: rgb(170, 129, 122);
+  --color2: rgb(139, 125, 171);
+  --color2-dark: rgb(103, 93, 128);
+  --color2-darker: rgb(68, 61, 85);
+}
+
 * {
-  margin: 0;
   padding: 0;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
+  margin: 0;
   box-sizing: border-box;
 }
-.wrap {
-  padding: 2em 1em;
-  width: 400px;
-  max-width: 100%;
-  margin-left: auto;
-  margin-right: auto;
+
+.Sudoku {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  background-color: var(--color2);
+  padding: 50px;
+  height: 100vh;
 }
 
-@media (min-width: 30em) {
-  .wrap {
-    width: 490px;
-  }
-  .sudoku-board input {
-    font-size: 24px;
-    font-size: 1.5rem;
-  }
-  .sudoku-board .candidates {
-    font-size: 0.8em;
-  }
-}
-
-.sudoku-board {
-  min-height: 22.75rem;
-  margin-bottom: 1em;
-}
-
-/*cell (wrapper) contains both cell input and candidates div*/
-.sudoku-board-cell {
-  display: inline-block;
-  position: relative;
-  border: 1px solid #ddd;
-  background: white;
-  max-width: 11.11111%;
-}
-
-/*rules for drawing the black lines dividing houses
-	-- specific for board size 9! need diff rules for diff board sizes
-*/
-[data-board-size="9"].sudoku-board .sudoku-board-cell:nth-of-type(9n + 1) {
-  border-left-width: 2px;
-  border-left-color: #808080;
-}
-
-[data-board-size="9"].sudoku-board
-  .sudoku-board-cell:nth-of-type(n):nth-of-type(-n + 9) {
-  border-top-width: 2px;
-  border-top-color: #808080;
-}
-
-[data-board-size="9"].sudoku-board .sudoku-board-cell:nth-of-type(3n) {
-  border-right-width: 2px;
-  border-right-color: #808080;
-}
-
-[data-board-size="9"].sudoku-board
-  .sudoku-board-cell:nth-of-type(n + 19):nth-of-type(-n + 27),
-[data-board-size="9"].sudoku-board
-  .sudoku-board-cell:nth-of-type(n + 46):nth-of-type(-n + 54),
-[data-board-size="9"].sudoku-board
-  .sudoku-board-cell:nth-of-type(n + 73):nth-of-type(-n + 81) {
-  border-bottom-width: 2px;
-  border-bottom-color: #808080;
-}
-
-/* the input for the value of each cell (i.e. 1-9 or empty for standard sudoku*/
-.sudoku-board-cell input {
-  background: none;
-  font-size: 19.2px;
-  font-size: 1.2rem;
+.tile {
+  width: 40px;
+  height: 40px;
   text-align: center;
-  width: 2em;
-  max-width: 100%;
-  height: 2em;
-  border: 0;
-  position: relative;
-  z-index: 1; /*on top of candidates*/
+  font-size: 32px;
+  outline: none;
+  background-color: var(--color1);
+  border: 2px solid black;
+  margin-left: -1px;
+  margin-top: -1px;
 }
 
-/*highlight new input in board cell*/
-.sudoku-board-cell .highlight-val {
-  color: #00d;
+.taken {
+  background-color: var(--color1-dark);
+  color: var(--color2-darker);
 }
 
-/*highligt incorrect input*/
-.sudoku-board-cell .board-cell--error {
-  background: #d00;
-  color: #eee;
-}
-
-/*wrapper that hold the candidates for each cell*/
-.sudoku-board-cell .candidates {
-  display: none; /*hidden by default*/
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
+.initial {
+  margin-left: -1px;
+  margin-top: -1px;
+  width: 40px;
+  height: 40px;
   text-align: center;
-  font-size: 0.75em; /*1/3 /1.13 out of the 2*1.2em cell height*/
-  letter-spacing: -0.5px;
-  font-family: monospace, sans-serif;
-
-  /*use as justify grid
-  line-height: 0;
-  text-align: justify;
-  */
+  font-size: 32px;
+  outline: none;
+  background-color: var(--color1-darker);
+  border: 2px solid black;
 }
 
-.sudoku-board .candidates:after {
-  content: "";
-  display: inline-block;
+.board {
+  display: grid;
+  grid-template-columns: repeat(9, 0fr);
+  padding: 20px;
+}
+
+.interface {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.info-interface input {
+  width: 250px;
+  height: 40px;
+  text-align: center;
+  font-size: 24px;
+  outline: none;
+  color: var(--color2-dark);
+  background-color: var(--color1);
+  border: 2px solid var(--color2-dark);
+  margin-bottom: 20px;
+}
+
+.action-interface {
   width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 }
 
-/* when board cells start to get narrower because of small screen,
-			reduce letter spacing for candidates to make them still fit*/
-@media (max-width: 23em) {
-  .sudoku-board .candidates {
-    letter-spacing: -2px;
-  }
+button {
+  background-color: var(--color1);
+  padding: 8px 24px;
+  border: 2px solid var(--color2-dark);
+  border-radius: 8px;
+  color: var(--color2-dark);
+  font-size: 18px;
+  transition: 0.1s all ease-in-out;
 }
 
-.showCandidates .candidates {
-  display: block;
-}
-
-/*each candidate in each cell is wrapped in a div*/
-.sudoku-board .candidates div {
-  display: inline-block;
-  width: 20%;
-  line-height: 1.13;
-  vertical-align: top;
-}
-
-/*.candidates div*/
-.candidate--highlight {
-  background-color: yellow;
-}
-
-/*.candidates div*/
-.candidate--to-remove {
-  background-color: red;
-  color: white;
+button:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+  background-color: var(--color1-dark);
 }

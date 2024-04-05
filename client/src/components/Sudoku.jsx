@@ -1,0 +1,29 @@
+import Board from "../UI/Board";
+
+function Sudoku({ grid, setGrid, initialGrid }) {
+
+
+    function handleChange(row, col, e) {
+        const re = /^[0-9\b]+$/;
+        if (e.target.value === "" || re.test(e.target.value)) {
+            if (Number(e.target.value) < 10 && initialGrid.current[row][col] === 0) {
+                const newGrid = [...grid];
+                newGrid[row][col] = Number(e.target.value);
+                setGrid(newGrid);
+            }
+        }
+    }
+
+    return (
+        <div className="sudoku-board">
+            <Board
+                puzzle={initialGrid.current}
+                grid={grid}
+                handleChange={handleChange}
+            />
+
+        </div>
+    );
+}
+
+export default Sudoku;
