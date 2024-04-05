@@ -47,7 +47,7 @@ npm install
 **Paso 4:** Ejecute la aplicación frontend
 
 ```bash
-npm start
+npm run dev
 ```
 
 Navegue a [http://localhost:3000](http://localhost:3000) para acceder a la aplicación.
