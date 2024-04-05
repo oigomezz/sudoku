@@ -87,9 +87,6 @@ function Interface({ grid, setGrid, getGrid, initialGrid }) {
 
     return (
         <div className="interface">
-            <div className="info-interface">
-                <input readOnly value={puzzleStatus}></input>
-            </div>
             <div className="action-interface">
                 <button
                     className="generator-btn btn"
@@ -123,6 +120,9 @@ function Interface({ grid, setGrid, getGrid, initialGrid }) {
                 >
                     Clear
                 </button>
+            </div>
+            <div className="info-interface">
+                <input readOnly value={puzzleStatus}></input>
             </div>
         </div>
     );

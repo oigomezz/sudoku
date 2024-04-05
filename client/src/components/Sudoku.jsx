@@ -2,7 +2,6 @@ import Board from "../UI/Board";
 
 function Sudoku({ grid, setGrid, initialGrid }) {
 
-
     function handleChange(row, col, e) {
         const re = /^[0-9\b]+$/;
         if (e.target.value === "" || re.test(e.target.value)) {

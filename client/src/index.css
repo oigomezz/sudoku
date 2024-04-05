@@ -8,9 +8,19 @@
 }
 
 * {
-  padding: 0;
   margin: 0;
+  padding: 0;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
+}
+
+.wrap {
+  padding: 2em 1em;
+  width: 400px;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .Sudoku {
@@ -55,11 +65,11 @@
 .board {
   display: grid;
   grid-template-columns: repeat(9, 0fr);
-  padding: 20px;
+  padding: 20px 0px;
 }
 
 .interface {
-  width: 50%;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -75,7 +85,7 @@
   color: var(--color2-dark);
   background-color: var(--color1);
   border: 2px solid var(--color2-dark);
-  margin-bottom: 20px;
+  margin-top: 20px;
 }
 
 .action-interface {
