@@ -1,29 +1,39 @@
+import { useState, useRef } from "react";
 import Board from "../UI/Board";
+import Interface from "../UI/Interface";
 
-function Sudoku({ grid, setGrid, initialGrid }) {
+function getGrid() {
+  const grid = [];
+  for (let i = 0; i < 9; i++) grid[i] = Array(9).fill(0);
+  return grid;
+}
 
-
-    function handleChange(row, col, e) {
-        const re = /^[0-9\b]+$/;
-        if (e.target.value === "" || re.test(e.target.value)) {
-            if (Number(e.target.value) < 10 && initialGrid.current[row][col] === 0) {
-                const newGrid = [...grid];
-                newGrid[row][col] = Number(e.target.value);
-                setGrid(newGrid);
-            }
-        }
-    }
-
-    return (
-        <div className="sudoku-board">
-            <Board
-                puzzle={initialGrid.current}
-                grid={grid}
-                handleChange={handleChange}
-            />
-
-        </div>
-    );
+function Sudoku() {
+  const [grid, setGrid] = useState(getGrid);
+  const initialGrid = useRef(getGrid());
+  return (
+    <div className="wrap">
+      <header>
+        <h1> Sudoku Simple Demo</h1>
+      </header>
+      <main>
+        <Board
+          grid={grid}
+          getGrid={getGrid}
+          setGrid={setGrid}
+          initialGrid={initialGrid}
+        />
+      </main>
+      <footer>
+        <Interface
+          grid={grid}
+          getGrid={getGrid}
+          setGrid={setGrid}
+          initialGrid={initialGrid}
+        />
+      </footer>
+    </div>
+  );
 }
 
 export default Sudoku;
