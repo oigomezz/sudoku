@@ -1,11 +1,28 @@
 import Cell from "./Cell";
 
-function Board({ puzzle, grid, handleChange }) {
-    return (
-        <div className="board">
-            <Cell puzzle={puzzle} grid={grid} handleChange={handleChange} />
-        </div>
-    );
+function Board({ grid, setGrid, initialGrid }) {
+  function handleChange(row, col, e) {
+    const re = /^[0-9\b]+$/;
+    if (e.target.value === "" || re.test(e.target.value)) {
+      if (Number(e.target.value) < 10 && initialGrid.current[row][col] === 0) {
+        const newGrid = [...grid];
+        newGrid[row][col] = Number(e.target.value);
+        setGrid(newGrid);
+      }
+    }
+  }
+
+  return (
+    <div className="sudoku-board">
+      <div className="board">
+        <Cell
+          puzzle={initialGrid.current}
+          grid={grid}
+          handleChange={handleChange}
+        />
+      </div>
+    </div>
+  );
 }
 
 export default Board;
