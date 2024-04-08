@@ -14,13 +14,7 @@ function Board({ grid, setGrid, initialGrid }) {
 
   return (
     <div className="sudoku-board">
-      <div className="board">
-        <Cell
-          puzzle={initialGrid.current}
-          grid={grid}
-          handleChange={handleChange}
-        />
-      </div>
+      <Cell grid={grid} handleChange={handleChange} />
     </div>
   );
 }
