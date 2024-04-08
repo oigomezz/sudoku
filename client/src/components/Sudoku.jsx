@@ -14,7 +14,7 @@ function Sudoku() {
   return (
     <div className="wrap">
       <header>
-        <h1> Sudoku Simple Demo</h1>
+        <h1> Sudoku </h1>
       </header>
       <main>
         <Board

@@ -15,6 +15,11 @@
   margin-right: auto;
 }
 
+header h1 {
+  text-align: center;
+  margin-bottom: 1em;
+}
+
 .sudoku-board {
   display: grid;
   grid-template-columns: repeat(9, 0fr);
