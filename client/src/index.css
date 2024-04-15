@@ -8,8 +8,8 @@
 }
 
 .wrap {
-  padding: 2em 1em;
-  width: 400px;
+  padding: 1em;
+  width: 480px;
   max-width: 100%;
   margin-left: auto;
   margin-right: auto;
@@ -17,14 +17,15 @@
 
 header h1 {
   text-align: center;
-  margin-bottom: 1em;
+  margin: auto;
 }
 
 .sudoku-board {
   display: grid;
   grid-template-columns: repeat(9, 0fr);
-  min-height: 22.75rem;
+  min-height: 25rem;
   margin-bottom: 1em;
+  justify-content: center;
 }
 
 .interface {
@@ -80,7 +81,7 @@ button:hover {
 
 .sudoku-board-cell input {
   background: none;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   text-align: center;
   width: 2em;
   max-width: 100%;
