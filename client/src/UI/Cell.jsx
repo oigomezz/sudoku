@@ -17,8 +17,6 @@ function Cell({ puzzle, grid, handleChange }) {
         if (colIndex + 1 < 9 && colIndex + 1 >= 0)
           document.getElementById(`input-${rowIndex}-${colIndex + 1}`).focus();
         break;
-      default:
-        console.log(`No deberia moverse porque ${event.key} fue oprimido`);
     }
   };
 
